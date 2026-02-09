@@ -14,7 +14,8 @@ def getMyInfo():
             {"xUser": "aminespinoza"},
             {"linkedin": "amin-espinoza"},
             {"githubUser": "aminespinoza10"},
-            {"twitchUser": "aminespinoza10"}
+            {"twitchUser": "aminespinoza10"},
+            {"youtubeUser": "aminespinoza10"}
         ],
         "blog": "https://aminespinoza.com",
         "author": "Miranda Espinoza"
