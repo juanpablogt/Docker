@@ -1,0 +1,399 @@
+<meta name="robots" content="noindex" />
+
+<style>
+/* ====================== BASE / RESETS ====================== */
+body, #page, #page-wrapper, #region-main { background:#fff !important; }
+body { font-family:'Roboto','Helvetica Neue','Arial',sans-serif !important; color:#1d2125; }
+a { text-decoration:none; }
+
+/* ====================== VARIABLES ====================== */
+:root{
+  --utp-azul:#0c2438;
+  --space-xxs: 6px;
+  --space-xs:  10px;
+  --space-s:   14px;
+  --space-m:   20px;
+  --space-l:   28px;
+  --space-xl:  36px;
+
+  --container-max: 1560px;
+  --container-pad-x: clamp(16px, 4vw, 100px);
+}
+
+/* ====================== TOPBAR BLANCA ====================== */
+.utp-topbar{
+  position:sticky; top:0; z-index:1000;
+  background:#fff; border-bottom:1px solid rgba(0,0,0,.06);
+}
+.utp-topbar-inner{
+  max-width: var(--container-max);
+  margin:0 auto;
+  padding: 12px var(--container-pad-x);
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  min-height:64px;
+}
+.utp-brand-wrap{ display:flex; align-items:center; gap:18px; }
+.utp-brand{ display:flex; align-items:center; gap:10px; }
+.utp-brand img{ height:38px; width:auto; display:block; }
+
+.utp-main-nav{ display:flex; align-items:center; gap:24px; }
+.utp-main-nav a{ color:#0c2438; font-weight:500; opacity:.95; }
+.utp-main-nav a:hover{ opacity:1; text-decoration:underline; }
+
+.utp-actions{ display:flex; align-items:center; gap:18px; }
+.utp-icon-btn{ display:inline-flex; align-items:center; gap:8px; color:#0c2438; }
+.utp-icon-btn .label{ font-weight:600; letter-spacing:.2px; }
+
+@media (max-width: 767.98px){
+  .utp-main-nav{ display:none; }
+  .utp-topbar-inner{ padding-left:16px; padding-right:16px; }
+}
+
+/* ====================== HERO / BREADCRUMB ====================== */
+.utp-hero{
+  width:100%;
+  display:block; margin:0; border-radius:0;
+  background:#f5f5f5 url('http://10.1.0.138/moodle/pluginfile.php/1/theme_moove/sliderimage1/0/banner.png') center/cover no-repeat;
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.utp-hero-inner{
+  max-width: var(--container-max);
+  margin:0 auto;
+  padding: clamp(18px, 3.2vw, 28px) var(--container-pad-x);
+  min-height: 140px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.utp-breadcrumb{
+  font-size: 1rem; line-height:1.6; color:#0c2438; font-weight:500;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.utp-breadcrumb a{ color:#0c2438; }
+.utp-breadcrumb a:hover{ text-decoration:underline; }
+.utp-breadcrumb .sep{ margin:0 .55rem; color:#9aa3af; }
+.utp-breadcrumb .current{ color:#44505a; }
+
+/* ====================== LAYOUT LOGIN ====================== */
+.utp-login-wrap{
+  width:100%;
+  max-width:1200px;
+  margin: var(--space-xl) auto var(--space-s);
+  padding: 0 var(--space-m);
+}
+.utp-login-grid{
+  display:grid; grid-template-columns: 1fr; gap: var(--space-l);
+}
+@media (min-width: 992px){
+  .utp-login-grid{ grid-template-columns: 1fr 1fr; align-items:start; gap: calc(var(--space-l) + 6px); }
+}
+
+/* Títulos */
+.utp-login-title{
+  font-size: clamp(26px, 5.5vw, 38px);
+  font-weight: 700;
+  letter-spacing:.2px;
+  color:#0d2238;
+  margin-bottom: var(--space-s);
+}
+
+/* Campos y botones */
+.utp-field{ margin-bottom: var(--space-s); }
+.utp-field .input-group-text{ min-width:44px; justify-content:center; }
+.utp-field .form-control{
+  height:52px; font-size:1rem; border-radius:10px;
+}
+.utp-btn{
+  width:100%; height:48px; border-radius:10px; font-weight:600;
+  background:var(--utp-azul); border-color:var(--utp-azul);
+}
+.utp-btn:hover{ filter:brightness(1.06); }
+
+/* Enlaces debajo del botón */
+.utp-meta{ margin-top: var(--space-xs); }
+
+/* Bloque de ayuda */
+.utp-help h2{
+  font-size: clamp(20px, 4.2vw, 28px);
+  font-weight:700; color:#0d2238; margin-bottom: var(--space-xs);
+}
+.utp-help p, .utp-help li{
+  color:#1d2125; opacity:.95; line-height:1.75;
+}
+.utp-help ul{ margin: var(--space-xs) 0 0 20px; }
+
+/* ======================= FOOTER UTP (ARREGLADO) ======================= */
+#page-footer, footer#page-footer, .theme-moove footer{ display:none !important; }  /* oculto el footer nativo */
+
+:root{
+  --utp-base: 0.88rem;
+  --utp-title: 1.05rem;
+  --utp-note: 0.95rem;
+  --utp-links: 0.88rem;
+}
+@media (min-width: 992px){
+  :root{
+    --utp-base: 0.80rem;
+    --utp-title: 1.0rem;
+    --utp-note: 0.90rem;
+    --utp-links: 0.80rem;
+  }
+}
+
+.utp-footer-light{
+  background:#f7f8f9 !important;
+  padding: 30px 0 12px;
+  font-family:'Roboto','Helvetica Neue','Arial',sans-serif;
+  color:#374151; font-weight:300; font-size:var(--utp-base);
+  line-height:1.8; letter-spacing:.2px;
+}
+.utp-footer-light .container{
+  max-width:var(--container-max);
+  margin:0 auto;
+  padding-left: var(--container-pad-x);
+  padding-right: clamp(16px, 2vw, 20px);
+  background:transparent !important;
+}
+
+/* fila superior del footer sin depender de Bootstrap */
+.utp-top-row{
+  display:grid;
+  grid-template-columns: 190px 1fr;
+  align-items:start; column-gap: 40px;
+}
+@media (max-width: 767.98px){
+  .utp-top-row{ grid-template-columns: 1fr; row-gap:16px; }
+}
+
+.utp-title{ font-weight:500; color:#1f2937; font-size:var(--utp-title); letter-spacing:.3px; margin:0 0 14px; }
+
+.utp-qr{ display:block; max-width:190px; width:100%; height:auto; border-radius:3px; }
+@media (max-width: 575.98px){ .utp-qr{ max-width:140px; margin:0 auto 12px; } }
+
+.utp-logos{ display:flex; flex-wrap:wrap; align-items:center; gap: clamp(28px, 6vw, 70px); margin-bottom: clamp(16px, 4vw, 32px); }
+.utp-logos .utp-brand{ height: clamp(30px, 5.5vw, 44px); width:auto; opacity:.95; }
+
+.utp-note{ font-size:var(--utp-note); margin:.55rem 0; color:#4b5563; font-weight:300; max-width:1100px; }
+
+.utp-divider{ border:none; border-top:1px solid rgba(0,0,0,.08); margin: clamp(16px,4vw,34px) 0 12px; }
+
+/* enlaces en línea SIN viñetas ni dependencias de .list-inline */
+.utp-links{ display:flex; flex-wrap:wrap; gap:14px; padding:0; margin:0; list-style:none; font-size:var(--utp-links); }
+.utp-links li{ list-style:none; position:relative; padding-left:0; }
+.utp-links li + li::before{ content:"·"; color:#9ca3af; margin-right:14px; }
+.utp-links a{ color:#4b5563; text-decoration:none; transition:color .2s; }
+.utp-links a:hover{ color:#111827; text-decoration:underline; }
+
+/* Botón volver arriba */
+.btn-top{
+  position:fixed; bottom:22px; right:18px;
+  width:46px; height:46px; background:#4b5563; color:#fff; border:none; border-radius:50%;
+  font-size:20px; line-height:46px; text-align:center;
+  cursor:pointer; box-shadow:0 4px 6px rgba(0,0,0,.2);
+  transition:all .3s ease; z-index:999; opacity:0; visibility:hidden;
+}
+.btn-top.show{ opacity:1; visibility:visible; }
+.btn-top:hover{ background:#111827; transform:translateY(-3px); }
+
+/* Si tu navbar del tema es fija y alta, quita padding extra */
+@media (max-width: 991.98px){
+  .pagelayout-login #page { padding-top: 0; }
+}
+</style>
+
+<!-- ====================== TOPBAR BLANCA ====================== -->
+<header class="utp-topbar" role="banner">
+  <div class="utp-topbar-inner">
+    <div class="utp-brand-wrap">
+      <a class="utp-brand" href="{{config.wwwroot}}">
+        <!-- LOGO barra superior -->
+        <img src="http://10.1.0.138/moodle/pluginfile.php/1/theme_moove/logo/1760847986/Logo-UTP.svg" alt="UTP">
+      </a>
+      <nav class="utp-main-nav" aria-label="principal">
+        <a href="#">Univirtual</a>
+        <a href="{{config.wwwroot}}"><i class="fa fa-home" aria-hidden="true"></i></a>
+        <a href="{{config.wwwroot}}/course/">TODOS LOS CURSOS</a>
+      </nav>
+    </div>
+
+    <div class="utp-actions">
+      <a href="#" class="utp-icon-btn" aria-label="Cambiar idioma">
+        <span class="label">ES</span><i class="fa fa-globe" aria-hidden="true"></i>
+      </a>
+      <a href="{{config.wwwroot}}/course/search.php" class="utp-icon-btn" aria-label="Buscar">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ====================== HERO / BREADCRUMB FULL WIDTH ====================== -->
+<section class="utp-hero">
+  <div class="utp-hero-inner">
+    <nav class="utp-breadcrumb" aria-label="breadcrumbs">
+      <a href="{{config.wwwroot}}">Página Principal</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span class="current" aria-current="page">Entrar al sitio</span>
+    </nav>
+    <div class="utp-actions" aria-hidden="true">
+      <span class="utp-icon-btn"><span class="label">ES</span><i class="fa fa-globe"></i></span>
+      <span class="utp-icon-btn"><i class="fa fa-search"></i></span>
+      <section class="utp-hero" style="background:url('/pluginfile.php/1/theme_moove/sliderimage1/0/banner.png') center/cover no-repeat; min-height:220px;"></section>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CONTENIDO LOGIN ====================== -->
+<div class="utp-login-wrap">
+  <div class="utp-login-grid">
+    <!-- IZQUIERDA: FORMULARIO -->
+    <section>
+      <h1 class="utp-login-title">Digita Tu Número de Documento</h1>
+
+      {{#error}}<div class="alert alert-danger" role="alert">{{{error}}}</div>{{/error}}
+      {{#info}} <div class="alert alert-info"    role="alert">{{{info}}}</div>{{/info}}
+
+      {{#showloginform}}
+      <form action="{{loginurl}}" method="post" id="login" autocomplete="on">
+        <input type="hidden" name="logintoken" value="{{logintoken}}">
+
+        <div class="utp-field">
+          <label class="sr-only" for="username">Número de documento</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+            <input type="text" name="username" id="username" class="form-control"
+                   placeholder="Número de documento"
+                   {{#autofocusform}}autofocus{{/autofocusform}} required>
+          </div>
+        </div>
+
+        <div class="utp-field">
+          <label class="sr-only" for="password">Contraseña</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></span>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
+          </div>
+        </div>
+
+        {{#canrememberusername}}
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" name="rememberusername" id="rememberusername"
+                 {{#rememberusername}}checked{{/rememberusername}}>
+          <label class="form-check-label" for="rememberusername">Recordar usuario</label>
+        </div>
+        {{/canrememberusername}}
+
+        {{#recaptcha}}<div class="mb-3">{{{recaptcha}}}</div>{{/recaptcha}}
+
+        <div class="mb-2 utp-meta">
+          {{#forgotpasswordurl}}<a href="{{forgotpasswordurl}}">¿Olvidó su nombre de usuario o contraseña?</a>{{/forgotpasswordurl}}
+        </div>
+
+        <button type="submit" class="btn btn-primary utp-btn">Acceder</button>
+
+        {{#canloginasguest}}
+        <div class="utp-guest mt-2">
+          <a class="btn btn-outline-secondary" href="{{guestloginurl}}">Entrar como persona invitada</a>
+        </div>
+        {{/canloginasguest}}
+      </form>
+      {{/showloginform}}
+
+      {{#hasidentityproviders}}
+      <div class="mt-3">
+        <div class="fw-semibold mb-1">O ingresa con:</div>
+        <ul class="list-unstyled d-flex flex-wrap gap-2 m-0">
+          {{#identityproviders}}
+          <li>
+            <a class="btn btn-light d-flex align-items-center gap-2" href="{{url}}">
+              {{#iconurl}}<img src="{{iconurl}}" alt="" style="width:20px;height:20px">{{/iconurl}}
+              <span>{{name}}</span>
+            </a>
+          </li>
+          {{/identityproviders}}
+        </ul>
+      </div>
+      {{/hasidentityproviders}}
+    </section>
+
+    <!-- DERECHA: AYUDA -->
+    <aside class="utp-help">
+      <h1 class="utp-login-title" style="margin-bottom:6px;">Registrate como usuario</h1>
+      <p>Para acceder a esta página debe crear una cuenta primero.</p>
+
+      <h2>¿Cómo ingresar al Campus?</h2>
+      <ul>
+        <li><strong>Si es tu primer ingreso:</strong> escribe en nombre de usuario tu <strong>Documento de Identidad</strong> sin puntos o comas y en contraseña la palabra <em>“cambiar”</em> en minúscula.</li>
+        <li><strong>Si has ingresado anteriormente:</strong> en nombre de usuario escribe tu <strong>Documento de Identidad</strong> sin puntos o comas y en contraseña la habitual.</li>
+        <li><strong>Si deseas restablecer tu contraseña:</strong> usa “¿Olvidó su nombre de usuario o contraseña?”.</li>
+        <li><strong>Dudas:</strong> comunícate a <a href="mailto:univirtual-utp@utp.edu.co">univirtual-utp@utp.edu.co</a>.</li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<!-- ============================ FOOTER UTP ============================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Si quieres que el logo lleve al Dashboard:
+  const logoLink = document.querySelector('.utp-brand');
+  if (logoLink) logoLink.setAttribute('href', '{{config.wwwroot}}/my/');
+
+  // Botón volver arriba
+  const btnTop = document.getElementById('btn-top');
+  if (btnTop) {
+    const onScroll = () => (window.scrollY > 250)
+      ? btnTop.classList.add('show')
+      : btnTop.classList.remove('show');
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+    btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+});
+</script>
+
+<div class="utp-footer-light">
+  <div class="container">
+    <div class="utp-top-row">
+      <!-- QR -->
+      <div>
+        <img class="utp-qr"
+             src="https://img.playbook.com/QP2GlegORu_NvLJSm8GZVBmQ8pHxXWMZZcKZOQrOQqk/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzMwOWZjOTgx/LWM4OTItNDRkNy1i/NzgxLTRkMTM5OWUz/NTk5YQ"
+             alt="QR Univirtual">
+      </div>
+
+      <!-- Logos + textos -->
+      <div>
+        <h4 class="utp-title">Universidad Tecnológica de Pereira | Univirtual</h4>
+
+        <div class="utp-logos">
+          <img src="http://10.1.0.138/moodle/pluginfile.php/1/theme_moove/logo/1760847986/Logo-UTP.svg" alt="UTP" class="utp-brand">
+          <img src="https://img.playbook.com/uz_IL-27MUaw-N1CCnwip7MdyYezBxPL8TBYW9NKHIg/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljL2I0M2JhYzMx/LWNjY2ItNGM3Yy05/ZmZhLTc1MjViZTVk/MWIzMw" alt="Univirtual" class="utp-brand">
+          <img src="https://img.playbook.com/-_nYRApyKOYsACEuyRxbZSauoHUNH05g3xe7IsuBE4o/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljL2Q4NjA4NGRm/LWI3YWYtNDk3Mi1i/YTBiLWNhNTIxNWMw/MzhkNQ" alt="Educación" class="utp-brand">
+        </div>
+
+        <p class="utp-note">
+          Universidad Tecnológica de Pereira Re acreditada como Institución de Alta Calidad por el MEN - 2021 / 2031.
+          Institución de Educación Superior Vigilada por MEN. Certificada en Gestión de Calidad ISO 9001:2008 /
+          Gestión Pública NTC GP 1000:2009. Acreditación Internacional Sello de Calidad SOFÍA - Fundación para el
+          Conocimiento Madrid.
+        </p>
+        <p class="utp-note">Carrera 27 #10-02 Barrio Álamos - Risaralda - Colombia - AA: 97 - Código postal: 660003</p>
+        <p class="utp-note">Horario de atención: Lunes a Viernes de 8:00 a.m. a 12:00 m. y de 2:00 p.m. a 6:00 p.m.</p>
+      </div>
+    </div>
+
+    <hr class="utp-divider">
+
+    <ul class="utp-links">
+      <li><a href="https://docs.moodle.org/402/en/Privacy">Help and documentation</a></li>
+      <li><a href="/admin/tool/dataprivacy/summary.php">Data retention summary</a></li>
+      <li><a href="https://download.moodle.org/mobile?version=2023042401.02&lang=en&iosappid=633359593&androidappid=com.moodle.moodlemobile">Get the mobile app</a></li>
+    </ul>
+  </div>
+</div>
+
+<button id="btn-top" class="btn-top" aria-label="Volver arriba" title="Volver arriba">
+  <i class="fas fa-chevron-up" aria-hidden="true">↑</i>
+</button>
+
