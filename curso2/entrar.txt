@@ -1,3 +1,4 @@
 docker exec -it control bash
-ssh debian1          # o cualquiera de los 9
+ssh ansible@debian1
+
 
